@@ -1,0 +1,73 @@
+
+<link href=../fic.css rel=stylesheet type=text/css>
+
+<html><title>BeLZeL.Free.Fr - Home | Langage C | Hook Clavier Global ________________________________________________________________________</title><body>
+<h1> Hook Clavier Global </h1>
+<hr>
+
+<h2> ..:: DescriptioN ::.. </h2>
+Ce programme intercepte toutes les <b>touches du clavier</b> sur lesquelles vous
+tapez, quelle que soit l'application (d'où sa globalité).<br><br>
+
+Un <b>fichier texte</b> est créé (c:\log.txt) dans lequel vous trouverez le début
+et la fin du hook, les touches appuyées.<br><br>
+
+Dans la fonction de hook, on utilise la fonction <b>ToAscii</b> (qui traduit une valeur
+en un caractère). Cette fonction gère très mal les DEAD KEYS. Les DEAD KEYS sont
+les caractères qui doivent être combinés à un autre pour ne former qu'un ( ^ + e = ê ).<br><br>
+
+Si on doit traiter une DEAD KEY, il est obligatoire d'utiliser une autre
+fonction. J'ai opté pour <b>GetKeyNameText ( )</b><br><br>
+
+Important également, le fichier texte n'est pas constamment ouvert. Il n'est
+ouvert que lorsqu'on veut y écrire un caractère puis on le referme. En effet,
+si notre programme n'est pas quitté correctement, il se peut qu'il y ait des
+problèmes pour réouvrir ce fichier. D'autant plus qu'on écrira pas assez vite
+pour mettre en défaut cette façon de faire.<br><br>
+
+<center>..:: <b><a href=hook.zip>Téléchargez Hook Clavier</a> ::..</b></center>
+<br><hr>
+
+<h2> ..:: InformationS ::.. </h2>
+<b> Version :</b>        1.1 (30 juillet 2004)<br>
+<b> Compilateur :</b>    Dev-C++ 4.9.8.10<br>
+<b> Programmation :</b>  Langage C (Win32)<br>
+<b> Configuration Recommandée :</b>
+<li>Un clavier avec des touches :p
+<li>Windows 95/98/2000/XP
+<br><br><hr>
+
+<h2> ..:: Compilation ::.. </h2>
+<b>Sous DevCpp</b><br>
+Double-cliquez sur le fichier HookDLL.dev.<br>
+Lancez la compilation en appuyant sur CTRL+F11.<br>
+Vous obtiendrez <b>hbk.dll</b>.<br><br>
+
+Double-cliquez sur le fichier Project1.dev.<br>
+Lancez la compilation en appuyant sur CTRL+F11.<br>
+Vous obtiendrez <b>bin.exe</b>.<br><br>
+
+Double-cliquez sur <b>bin.exe</b> pour lancer le programme.<br><br>
+
+<a href=main.c.html>main.c</a> : fichier source principal (pour utiliser la DLL)<br>
+<a href=dllmain.c.html>dllmain.c</a> : fichier DLL (pour le hook)
+<br><br><hr>
+
+<h2> ..:: Historique ::.. </h2>
+<pre>
+  <b><u>Version 1.1</u></b> : (30 juillet 2004)
+   - Gestion des DEAD KEYS
+
+  <b><u>Version 1.0</u></b> : (15 juillet 2004)
+   - permière version qui fonctionne
+</pre>
+<hr>
+
+<h2> ..:: Liens ::.. </h2>
+<b>Logiciel DevCpp</b><br>
+http://www.bloodshed.net/devcpp.html
+<br><br><hr>
+
+<center><b>BeLZeL</b> - [http] belzel.free.fr<br>belzel [at] free [dot] fr<br></center>
+<center><img src="http://perso0.free.fr/cgi-bin/wwwcount.cgi?df=belzel_hook.dat&ft=0&dd=E&pad=0"> visiteurs</center><br><br>
+</font></body></html>

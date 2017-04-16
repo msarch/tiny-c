@@ -1,0 +1,102 @@
+-c
+---
+
+"gcc -c hello.c"           compile "hello.c" en une object file: "hello.o".
+"gcc hello.o"              cree "a.exe" (nom par defaut) depuis "hello.o".
+"gcc hello.c"              cree "a.exe" (nom par defaut) directement
+
+
+-o
+---
+
+indique le nom du fichier compilé
+
+"gcc -o hello.exe hello.c" cree "hello.exe" 
+
+remarque : 
+le ".exe" de "-o hello.exe" peut etre omis, l'output sera quand meme "hello.exe"
+
+
+
+-W 
+---
+
+Warnings:
+to turns on "all of the easily avoidable warnings":
+(GCC warning options begin with a capital W.)
+
+      -Wall 
+ 
+to turns on "extra easily avoidable warnings": 
+
+      -Wextra 
+      
+to turn off all warnings: (Don't do that.)
+
+      -w 
+
+
+-fno-exceptions 
+---------------
+
+Exception handling is enabled by default, which will make your resulting
+binaries larger. Unless you want to use exceptions, you can turn off exception handling with the flag :
+
+
+-fno-rtti
+---------
+You can further reduce the size of your exe (but not by much) by disabling RTTI:  
+however this prohibits the use of exception handling as well as run-time type identification features like dynamic_cast. 
+
+
+-s 
+---
+use this flag to strip symbols from your final exe. 
+
+       
+template instantiation flags
+----------------------------
+There is a lot of other trickery one can do with template instantiation flags as to avoid redundant code generation.
+
+       
+-L 
+---
+
+Another point to clear up: .a files are understood as 
+library (actually archive) files by MinGW. 
+This is all explained in the documentation, however it is worth noting 
+that the linker (called implicitly by g++) can link just about 
+any type of file to build a target. 
+
+However, the naming convention "lib*.a" for static libraries allows
+you to specify a search path for static link libraries. 
+
+That is; if your library is named "libfoo.a" for example, 
+then it can exist anywhere in the path specified by the -L flag, 
+and should then be specified as -lfoo. 
+
+If you are linking to a library named "foo.lib" however, you will need to type  the full path and filename for this, and every other .lib (i.e., not .a) file.
+
+
+
+-mwindows
+-mconsole
+----------
+
+"gcc -o hello hello.o -mwindows"  creates an executable hello.exe from hello.o 
+
+The "-mwindows" switch is needed to create Windows executables with no console. 
+ 
+It assures the appropriate Windows libraries are linked in for you.
+ 
+To get a console screen along with a standard windows application, add the 
+"-mconsole" flag as well as "-mwindows".
+
+
+-fexpensive-optimizations 
+-------------------------
+
+
+-O3 -02 -01
+------------
+

@@ -1,0 +1,206 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 35D84F250FA84E7F00170F44 /* gt */;
+		activeTarget = 8D1107260486CEB800E47090 /* gt */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* gt */,
+		);
+		codeSenseManager = 35D84F350FA84EC000170F44 /* Code sense */;
+		executables = (
+			35D84F250FA84E7F00170F44 /* gt */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					300,
+					231,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					229,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					341,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					301,
+					60,
+					20,
+					48.16259765625,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 262688383;
+			PBXWorkspaceStateSaveDate = 262688383;
+		};
+		perUserProjectItems = {
+			35D84F3D0FA84F1300170F44 /* PBXTextBookmark */ = 35D84F3D0FA84F1300170F44 /* PBXTextBookmark */;
+			35D84F3E0FA84F1300170F44 /* PBXTextBookmark */ = 35D84F3E0FA84F1300170F44 /* PBXTextBookmark */;
+			35D84F420FA84F6900170F44 /* PBXTextBookmark */ = 35D84F420FA84F6900170F44 /* PBXTextBookmark */;
+			35D84F470FA84F8400170F44 /* PBXTextBookmark */ = 35D84F470FA84F8400170F44 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 35D84F340FA84EC000170F44 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {678, 1862}}";
+			sepNavSelRange = "{3000, 0}";
+			sepNavVisRange = "{2606, 392}";
+		};
+	};
+	32CA4F630368D1EE00C91783 /* gt_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 253}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 135}";
+		};
+	};
+	35D84F250FA84E7F00170F44 /* gt */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = gt;
+		sourceDirectories = (
+		);
+	};
+	35D84F320FA84EC000170F44 /* GrossTon.c */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.c;
+		name = GrossTon.c;
+		path = /Developer/c/003.GrossTon/GrossTon.c;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {678, 1706}}";
+			sepNavSelRange = "{0, 2837}";
+			sepNavVisRange = "{2291, 280}";
+		};
+	};
+	35D84F340FA84EC000170F44 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	35D84F350FA84EC000170F44 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	35D84F3D0FA84F1300170F44 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "warning: implicit declaration of function 'highvideo'";
+		fRef = 35D84F320FA84EC000170F44 /* GrossTon.c */;
+		rLen = 1;
+		rLoc = 25;
+		rType = 1;
+	};
+	35D84F3E0FA84F1300170F44 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 35D84F320FA84EC000170F44 /* GrossTon.c */;
+		name = "GrossTon.c: 26";
+		rLen = 1;
+		rLoc = 727;
+		rType = 0;
+		vrLen = 243;
+		vrLoc = 605;
+	};
+	35D84F420FA84F6900170F44 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 35D84F320FA84EC000170F44 /* GrossTon.c */;
+		name = "GrossTon.c: 26";
+		rLen = 0;
+		rLoc = 727;
+		rType = 0;
+		vrLen = 228;
+		vrLoc = 1864;
+	};
+	35D84F470FA84F8400170F44 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 35D84F320FA84EC000170F44 /* GrossTon.c */;
+		name = "GrossTon.c: 26";
+		rLen = 0;
+		rLoc = 727;
+		rType = 0;
+		vrLen = 228;
+		vrLoc = 1864;
+	};
+	8D1107260486CEB800E47090 /* gt */ = {
+		activeExec = 0;
+		executables = (
+			35D84F250FA84E7F00170F44 /* gt */,
+		);
+	};
+}

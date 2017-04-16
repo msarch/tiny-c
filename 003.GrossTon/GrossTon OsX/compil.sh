@@ -1,0 +1,1 @@
+gcc -Wall -o /Users/MS/Drive/dev/c/003.GrossTon/GrossTon\ OsX/GrossTon /Users/MS/Drive/dev/c/003.GrossTon/GrossTon\ OsX/GrossTonOsX.c 

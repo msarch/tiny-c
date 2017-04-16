@@ -1,0 +1,162 @@
+ *  
+ *   
+ *   
+ *TODO
+ *   
+ *extraire du chemin complet:  
+ *    		 - le chemin : "path"
+ *        	- le nom isolé "name"
+ *        	- l'extension seule "ext"
+ *          
+ * verifier si fichier ou repertoire : v.p179  : sys/stat.h
+ * 
+ *
+
+
+
+
+
+No, not really. Actually, it is very easy to get rid of it. We just change the structure STREAM like this:
+
+typedef struct tagStream  {
+        char *Name;
+        long handle;
+        FILE *file;
+} STREAM;
+
+and we take care to erase any references to that member. We eliminate the memcpy calls, and that’s all. Our program is smaller, uses less memory, and, what is essential, does the same thing quicker than the older version, since we spare the copying.
+
+It is very important to learn from the beginning that software gains not only with the lines of code that you write, but also with the lines of code that you eliminate!
+Path handling
+But let’s continue with our program. It looks solid, and running it with a few files in the current directory works. 
+
+Let’s try then:
+
+H:\lcc\examples>freq1 "..\src77\*.c" | more
+
+CRASH!
+
+What’s happening?
+
+Following the program in the debugger, we see that we do not test for NULL, when opening a file. We correct this both in checkargs and GetNext. We write a function Fopen, using the same model as xmalloc: if it can’t open a file, it will show an error message in stderr, and exit the program.
+
+FILE *Fopen(char *name,char *mode)
+{
+        FILE *result = fopen(name,mode);
+        if (result == NULL) {
+                fprintf(stderr,
+                      "Impossible to open '%s'\n",name);
+                exit(1);
+        }
+        return result;
+}
+
+Ok, we change all fopen() into Fopen() , recompile, and we test again:
+
+
+H:\lcc\examples>freq1 "..\src77\*.c" | more
+Impossible to open ‘Alloc.c’
+
+Well, this looks better, but why doesn’t open Alloc.c?
+
+Well, it seems that the path is not being passed to fopen, so that it tries to open the file in the current directory, instead of opening it in the directory we specify in the command line.
+
+One way to solve this, would be to change our current directory to the directory specified in the command line, and then try to open the file. We could do this in checkargs, since it is there where we open a file for the first time. All other files will work, if we change the current directory there.
+
+How we could do this?
+
+If the argument contains backslashes, it means there is a path component in it. We could copy the string up to the last backslash, and then change our current directory to that. For instance, if we find an argument like “..\src77\*.c”, the path component would be “..\src77\”.
+
+Here is an updated version of checkargs:
+
+STREAM *checkargs(int argc,char *argv[])
+{
+        STREAM *infile = NULL;
+        long findfirstResult;
+        struct _finddata_t fd;
+        char *p;
+
+        if (argc < 2) {
+               fprintf(stderr,
+                  "Usage: countchars <file name>\n");
+			exit(1);
+        }
+        else {
+        findfirstResult = _findfirst(argv[1],&fd);
+             if (findfirstResult < 0) {
+                        fprintf(stderr,
+                        "File %s doesn't exist\n",argv[1]);
+                        return NULL;
+             }
+             infile = malloc(sizeof(STREAM));
+             infile->Name = argv[1];
+             p = strrchr(argv[1],'\\');
+             if (p) {
+                *p = 0;
+                chdir(argv[1]);
+                *p = '\\';
+            }
+            infile->file = Fopen(fd.name,"rb");
+            infile->handle = findfirstResult;
+        }
+        return infile;
+}
+
+We use the library function strrchr. That function will return a pointer to the last position where the given character appears in the input string, or NULL, if the given character doesn’t appear at all. Using that pointer, we replace the backslash with a NULL character. Since a zero terminates all strings in C, this will effectively cut the string at that position. 
+
+Using that path, we call another library function, chdir that does what is name indicates: changes the current directory to the given one. Its prototype is in <direct.h>. 
+
+After changing the current directory, we restore the argument argv[1] to its previous value, using the same pointer “p”. Note too, that when we enter a backslash in a character constant (enclosed in single quotes), we have to double it. This is because the backslash is used, as within strings, for indicating characters like ‘\n’, or others.
+
+But this isn’t a good solution.  We change the current directory, instead of actually using the path information. Changing the current directory could have serious consequences in the working of other functions. If our program would be a part of a bigger software, this solution would surely provoke more headaches than it solves. So, let’s use our “name” field, that up to now isn’t being used at all. Instead of passing a name to Fopen, we will pass it a STREAM structure, and it will be Fopen that will take care of opening the right file. We change it like this:
+
+FILE *Fopen(STREAM *stream,char *name,char *mode)
+{
+        FILE *result;
+        char fullname[1024],*p;
+
+        p = strrchr(stream->Name,'\\');
+        if (p == NULL) {
+                fullname[0] = 0;
+        }
+        else {
+                *p = 0;
+                strcpy(fullname,stream->Name);
+                strcat(fullname,"\\");
+                *p = '\\';
+        }
+        strcat(fullname,name);
+        result = fopen(fullname,mode);
+        if (result == NULL) {
+                fprintf(stderr,
+                  "Impossible to open '%s'\n",fullname);
+                exit(1);
+        }
+        return result;
+}
+
+We declare a array of characters, with enough characters inside to hold a maximum path, and a few more. Then, and in the same declaration, we declare a character pointer, p. This pointer will be set with strrchr. If there isn’t any backslash in the path, we just set the start of our fullname[ ] to zero. If there is a path, we cut the path component as we did before, and copy the path component into the fullname variable. The library function strcpy will copy the second argument to the first one, including the null character for terminating correctly the string. 
+
+We add then a backslash using the strcat function that appends to its first argument the second string. It does this by copying starting at the terminator for the string, and copying all of its second argument, including the terminator.
+
+We restore the string, and append to our full path the given name. In our example, we copy into fullpath the character string “..\src77”, then we add the backslash, and then we add the rest of the name to build a name like “..\src77\alloc.c”.
+
+This done, we look again into our program. Yes, there are things that could be improved. For instance, we use the 256 to write the number of elements of the array Frequencies. We could improve the readability of we devised a macro NELEMNTS, that would make the right calculations for us.
+
+That macro could be written as follows:
+
+#define NELEMENTS(array) (sizeof(array)/sizeof(array[0]))
+
+This means just that the number of elements in any array, is the size of that array, divided by the size of each element. Since all elements have the same size, we can take any element to make the division. Taking array[0] is the best one, since that element is always present.
+
+Now, we can substitute the 256 by NELEMENTS(Frequencies), and even if we change our program to use Unicode, with 65535 different characters, and each character over two bytes, our size will remain correct. This construct, like many others, points to one direction: making the program more flexible and more robust to change.
+
+We still have our 256 in the definition of the array though. We can define the size of the array using the preprocessor like this:
+
+#define FrequencyArraySize 256
+
+This allows us later by changing this single line, to modify all places where the size of the array is needed.
+Lcc-win32 allows you an alternative way of defining this:
+
+static const int FrequencyArraySize = 256;
+This will work just like the pre-processor definition.

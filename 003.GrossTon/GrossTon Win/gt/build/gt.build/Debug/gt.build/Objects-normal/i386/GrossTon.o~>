@@ -1,0 +1,7 @@
+/Developer/c/003.GrossTon/GrossTon.c: In function 'choose1':
+/Developer/c/003.GrossTon/GrossTon.c:49: warning: implicit declaration of function 'getch'
+/Developer/c/003.GrossTon/GrossTon.c: In function 'sortie':
+/Developer/c/003.GrossTon/GrossTon.c:74: warning: implicit declaration of function 'exit'
+/Developer/c/003.GrossTon/GrossTon.c:74: warning: incompatible implicit declaration of built-in function 'exit'
+/Developer/c/003.GrossTon/GrossTon.c: In function 'main':
+/Developer/c/003.GrossTon/GrossTon.c:96: warning: implicit declaration of function 'clrscr'
