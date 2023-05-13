@@ -1,14 +1,15 @@
 /*    TODO (#1#):
-      le default de choose1 réecrit les 3 lignes filtrer les mauvaises touches et biper seulemnt
+      le default de choose1 rÃ©ecrit les 3 lignes filtrer les mauvaises touches et biper seulemnt
       dans "sortie : attente puis quitte puis ouvre gt.txt
-      dans "saveresult" ecriture dans le fichier (ou pas) à la suite
+      dans "saveresult" ecriture dans le fichier (ou pas) Ã  la suite
       checker l'input de volume detecter 'esc' et les filtrer les non numeriques
-      les 4 lignes du haut sont dediées à la commande (ou 4 lignes en bas ???
+      les 4 lignes du haut sont dediÃ©es Ã  la commande (ou 4 lignes en bas ???
 */
 
 #define VERSION "200 11 07"  /* remplacer par la date de la compil du programme en 10 caracteres exactement */
 #include <stdio.h>
 #include <conio2.h>
+
 #include <math.h>
 
 
